@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Requests\StoreSubscriberRequest;
+use App\Http\Controllers\TelecomOperatorController;
+
+
 
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
@@ -15,4 +18,9 @@ Route::get('/auth/me', [AuthController::class, 'me'])->middleware('auth:sanctum'
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/subscribers', [SubscriberController::class, 'index']);
     Route::post('/subscribers', [SubscriberController::class, 'store']);
+
+    Route::apiResource(
+        'telecom-operators',
+        TelecomOperatorController::class
+    );
 });
