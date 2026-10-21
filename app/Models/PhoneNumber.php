@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Model;
 
 class PhoneNumber extends Model
 {
+    protected $fillable = [
+        'telecom_operator_id',
+        'phone_number',
+        'status',
+    ];
+
     // شركة الاتصالات التي يتبع لها الرقم
     public function telecomOperator(): BelongsTo
     {
